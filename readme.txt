@@ -4,7 +4,7 @@ Tags: authors, recent, posts, widget
 Donate link: http://www.hawkwood.com/wp-donate.php
 Requires at least: 2.2
 Tested up to: 2.5
-Stable tag: 1.0.0
+Stable tag: trunk
 
 This sidebar widget provides a list of authors, with options including showing recent posts by that author.
 

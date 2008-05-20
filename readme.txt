@@ -40,3 +40,7 @@ Exclude admin - Hides the admin from being shown in the sidebar.
 
 1. This is the admin box in widgets, showing the options.
 
+== Version History ==
+
+* 1.1.0 - Hides subscribers from list when empty authors are showing
+* 1.0.0 - Initial release

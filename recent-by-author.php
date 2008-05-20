@@ -3,9 +3,9 @@
 Plugin Name: Recent By Author
 Plugin URI: http://www.hawkwood.com/archives/35
 Description: Sidebar widget to list all authors of a blog. Based on Robert Tsai's WP-Authors. Navigate to <a href="widgets.php">Presentation &rarr; Widgets</a> to add to your sidebar.
-Author: Justin Hawkwood</a>
+Author: Justin Hawkwood
 Author URI: http://www.hawkwood.com/
-Version: 1.0.0
+Version: 1.1.0
 */
 
 //*******************************************************
@@ -23,8 +23,10 @@ function list_recent_by_author($args = '') {
 
 	$return = '';
 
-	/** @todo Move select to get_authors(). */
-	$authors = $wpdb->get_results("SELECT ID, user_nicename from $wpdb->users " . ($exclude_admin ? "WHERE user_login <> 'admin' " : '') . "ORDER BY display_name");
+	/** @todo Move select to get_authors(). 
+	SELECT hkwd_wp_users.ID, hkwd_wp_users.user_nicename, hkwd_wp_usermeta.user_id, hkwd_wp_usermeta.meta_value FROM hkwd_wp_users, hkwd_wp_usermeta WHERE hkwd_wp_users.ID = hkwd_wp_usermeta.user_id AND hkwd_wp_usermeta.meta_key = 'hkwd_wp_user_level'
+	*/
+	$authors = $wpdb->get_results("SELECT $wpdb->users.ID, $wpdb->users.user_nicename, $wpdb->usermeta.meta_value FROM $wpdb->users, $wpdb->usermeta WHERE  $wpdb->users.ID = $wpdb->usermeta.user_id AND $wpdb->usermeta.meta_key = '".$wpdb->prefix."user_level' " . ($exclude_admin ? "AND user_login <> 'admin' " : '') . "ORDER BY display_name");
 
 	$author_count = array();
 	foreach ((array) $wpdb->get_results("SELECT DISTINCT post_author, COUNT(ID) AS count FROM $wpdb->posts WHERE post_type = 'post' AND " . get_private_posts_cap_sql( 'post' ) . " GROUP BY post_author") as $row) {

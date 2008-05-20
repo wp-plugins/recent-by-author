@@ -18,7 +18,7 @@ Title: - Like most widgets, there is an option for a custom title.
 
 Show post counts - Shows the total post count next to the authors name.
 
-Number of recent posts to show: - When greater than 0, a sublist is displayed under an author’s name with up to the set number of posts.
+Number of recent posts to show: - When greater than 0, a sublist is displayed under an author's name with up to the set number of posts.
 
 Show full names - Displays the authors first and last name instead of their chosen public name.
 
